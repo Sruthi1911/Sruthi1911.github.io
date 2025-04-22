@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collections</title>
+    <style>
+        h2 {
+            background-color: khaki;
+            color: black;
+            text-align: center;
+            padding: 10px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: antiquewhite;
+        }
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            flex-basis: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .btn-relative {
+            background-color: darkseagreen;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-relative:hover {
+            background-color: #6d9e6d;
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 200px; 
+            height:200px;
+            object-fit: cover;
+            border-radius:0%; 
+            margin-bottom: 10px;
+        }
+        .product p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Best Collections</h2>
+    </div>
+    <div class="product-container">
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/FFG00328_7d400e01-6bd7-4585-b456-883f21a98faa.jpg?v=1671528330" alt="Bio Morning Nectar Moisturizer">
+            <p>Bio Morning Nectar Moisturizer</p>
+            <p class="price">₹600</p>
+            <button class="btn-relative" onclick="addToCart('col1', 'Bio Morning Nectar Moisturizer', 600, 'https://www.biotique.com/cdn/shop/products/FFG00328_7d400e01-6bd7-4585-b456-883f21a98faa.jpg?v=1671528330')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images-static.nykaa.com/media/catalog/product/1/8/18d33a48906009451060_1509232.jpg?tr=w=500" alt="Bio Almond Oil">
+            <p>Bio Almond Oil</p>
+            <p class="price">₹120</p>
+            <button class="btn-relative" onclick="addToCart('col2', 'Bio Almond Oil', 120, 'https://images-static.nykaa.com/media/catalog/product/1/8/18d33a48906009451060_1509232.jpg?tr=w=500')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/articles/embrace-monsoon-glow-discover-the-benefits-of-biotique_s-face-serums.jpg?v=1689508629" alt="Bio Vitamin C Serum">
+            <p>Bio Vitamin C Serum</p>
+            <p class="price">₹200</p>
+            <button class="btn-relative" onclick="addToCart('col3', 'Bio Vitamin C Serum', 200, 'https://www.biotique.com/cdn/shop/articles/embrace-monsoon-glow-discover-the-benefits-of-biotique_s-face-serums.jpg?v=1689508629')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/Face-Glow-Fairness-Cream-50g.jpg?v=1671093167" alt="Bio Fairness Cream">
+            <p>Bio Fairness Cream</p>
+            <p class="price">₹250</p>
+            <button class="btn-relative" onclick="addToCart('col4', 'Bio Fairness Cream', 250, 'https://www.biotique.com/cdn/shop/products/Face-Glow-Fairness-Cream-50g.jpg?v=1671093167')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.allurecosmetics.in/cdn/shop/products/Biotique-100percentage-Pure-Natural-Fruit-Face-Wash-Pack-Of-2.jpg?v=1670056400" alt="Bio Fruit Face Wash">
+            <p>Bio Fruit Face Wash</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('col5', 'Bio Fruit Face Wash', 350, 'https://www.allurecosmetics.in/cdn/shop/products/Biotique-100percentage-Pure-Natural-Fruit-Face-Wash-Pack-Of-2.jpg?v=1670056400')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/8904352004094_1-min.jpg?v=1670243945" alt="Foaming Honey Face Wash">
+            <p>Foaming Honey Face Wash</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('col6', 'Foaming Honey Face Wash', 300, 'https://www.biotique.com/cdn/shop/files/8904352004094_1-min.jpg?v=1670243945')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/view01.jpg?v=1675409159" alt="Skin cleaning face wash">
+            <p>Skin cleaning face wash</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('col7', 'Skin cleaning face wash', 300, 'https://www.biotique.com/cdn/shop/products/view01.jpg?v=1675409159')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/03_CLEAR-IMPROVEMENT-Vitamin-C-Brightening-Concentrate_30ml_artwork.jpg?v=1670219336" alt="Vitamin C Brightening Concentrate">
+            <p>Vitamin C Brightening Concentrate</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('col8', 'Vitamin C Brightening Concentrate', 300, 'https://www.biotique.com/cdn/shop/products/03_CLEAR-IMPROVEMENT-Vitamin-C-Brightening-Concentrate_30ml_artwork.jpg?v=1670219336')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/FFG00327.jpg?v=1671528212" alt="Bio Hair Shampoo & Conditioner">
+            <p>Bio Hair Shampoo & Conditioner</p>
+            <p class="price">₹600</p>
+            <button class="btn-relative" onclick="addToCart('col9', 'Bio Hair Shampoo & Conditioner', 600, 'https://www.biotique.com/cdn/shop/products/FFG00327.jpg?v=1671528212')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/De-Pigmentation-kit.jpg?v=1674551837" alt="Bio Skin Care">
+            <p>Bio Skin Care</p>
+            <p class="price">₹400</p>
+            <button class="btn-relative" onclick="addToCart('col10', 'Bio Skin Care', 400, 'https://www.biotique.com/cdn/shop/products/De-Pigmentation-kit.jpg?v=1674551837')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/710WoGt1lkL.jpg" alt="Bio Skin Clearing & Brightening Products">
+            <p>Bio Skin Clearing & Brightening Products</p>
+            <p class="price">₹600</p>
+            <button class="btn-relative" onclick="addToCart('col11', 'Bio Skin Clearing & Brightening Products', 600, 'https://m.media-amazon.com/images/I/710WoGt1lkL.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://theglobalhues.com/wp-content/uploads/2021/08/BIOTIQUE-ADVANCED-AYURVEDA.png" alt="Bio Kit">
+            <p>Bio Kit</p>
+            <p class="price">₹500</p>
+            <button class="btn-relative" onclick="addToCart('col12', 'Bio Kit', 500, 'https://theglobalhues.com/wp-content/uploads/2021/08/BIOTIQUE-ADVANCED-AYURVEDA.png')">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to add items to cart
+        function addToCart(id, name, price, image) {
+            // Get existing cart or create new one
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save back to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            
+            // Show confirmation
+            alert(`${name} added to cart!`);
+        }
+        
+        // Navigation function
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

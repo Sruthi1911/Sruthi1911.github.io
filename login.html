@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background: url("https://i.pinimg.com/736x/ef/9d/9e/ef9d9ea9a0c87b8c457a82613161937c.jpg") no-repeat center center fixed;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .login-container a {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #4caf50;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Your Account</h2>
+        <div id="message" class="message"></div>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username or Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <a href="forgot-password.html">Forgot Password?</a>
+        <a href="create-account.html">Create an Account</a>
+    </div>
+
+    <script>
+        // Initialize user storage if it doesn't exist
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify([
+                { username: "demo", email: "user@example.com", password: "password123" }
+            ]));
+        }
+
+        function login() {
+            const usernameOrEmail = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            
+            const users = JSON.parse(localStorage.getItem('users'));
+            
+            // Find user by username or email
+            const user = users.find(u => 
+                u.username === usernameOrEmail || u.email === usernameOrEmail
+            );
+            
+            if (user && user.password === password) {
+                // In a real app, you would set a proper session/token
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                showMessage("Login successful! Redirecting...", "success");
+                
+                // Redirect to main page after 1 second
+                setTimeout(() => {
+                    window.location.href = 'project.html';
+                }, 1000);
+            } else {
+                showMessage("Invalid username/email or password", "error");
+            }
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds (unless it's a success message with redirect)
+            if (type !== 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>

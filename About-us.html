@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About-us</title>
+    <style>
+        body {
+            background-image: url('https://t3.ftcdn.net/jpg/03/21/56/58/360_F_321565851_tbutpMl8sIKpUYgLHWDru1LJIfswmZfW.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 80vh;
+            margin: 0;
+        }
+        .btn-relative {
+            text-align: center;
+            background-color: aliceblue;
+            color: black;
+            border: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-relative:hover {
+            background-color: darkkhaki;
+            color: black;
+        }
+        .button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        h1{
+            font-size:  50px;
+        
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="button">
+        <button class="btn-relative" onclick="goToPage('https://www.biotique.com/cdn/shop/files/Almond-Oil_06.jpg?v=1671173507')" alt="About-Us">About-Us</button>
+        <button class="btn-relative" onclick="goToPage('OurStory.html')" alt="OurStory">OurStory</button>
+        <button class="btn-relative" onclick="goToPage('Ingredients.html')" alt="Ingredients-index">Ingredients-index</button>
+        <button class="btn-relative" onclick="goToPage('Hotel&spa.html')" alt="Hotel&spa">Hotel&spa</button>    
+    </div>
+    <h1 style="color: green;padding-left: 20px;font-family:cursive;">Love of nature </h1>
+    <h1 style="color:green;padding-left: 200px;font-family: cursive;">to protect you from</h1>
+    <h1 style="color:orange;padding-left: 500px;font-family:cursive;">Sunrays....!</h1>
+    <script>
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

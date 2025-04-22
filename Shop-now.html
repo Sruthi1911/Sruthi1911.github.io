@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Now - Biotique</title>
+    <style>
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: bisque;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            width: 300px;
+            margin: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0%;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .h1 {
+            background-color: darkseagreen;
+            text-align: center;
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        .btn-relative {
+            background-color: darkseagreen;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .btn-relative:hover {
+            background-color: #6d9e6d;
+            transform: scale(1.05);
+        }
+
+        .button {
+            background-color: darkseagreen;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background-color: #6d9e6d;
+        }
+
+        .view-more-container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="h1">
+        <h1>Shop Now</h1>
+    </div>
+    
+    <div class="product-container">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71eGPJQryIL.AC_UF1000,1000_QL80.jpg" alt="Nourish & Hydrate moisturizer">
+            <p>Nourish & Hydrate moisturizer</p>
+            <p class="price">Price:₹300</p>
+            <button class="button" onclick="addToCart('shop1', 'Nourish & Hydrate moisturizer', 300, 'https://m.media-amazon.com/images/I/71eGPJQryIL.AC_UF1000,1000_QL80.jpg')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/12_AloeVeraSPF50GelSunscreen_100gm.jpg?v=1686117080" alt="Aloe Vera & Raspberry Hydra Gel">
+            <p>Aloe Vera & Raspberry Hydra Gel</p>
+            <p>Indian Sunscreen</p>
+            <p class="price">Price:₹300</p>
+            <button class="button" onclick="addToCart('shop2', 'Aloe Vera & Raspberry Hydra Gel', 300, 'https://www.biotique.com/cdn/shop/files/12_AloeVeraSPF50GelSunscreen_100gm.jpg?v=1686117080')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/8904317306188_1-min.jpg?v=1670233844" alt="Fruit Brightening Lip Balm">
+            <p>Fruit Brightening Lip Balm</p>
+            <p class="price">Price: ₹.300</p>
+            <button class="button" onclick="addToCart('shop3', 'Fruit Brightening Lip Balm',300, 'https://www.biotique.com/cdn/shop/products/8904317306188_1-min.jpg?v=1670233844')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/8904352001987.jpg?v=1665481075" alt="Mountain Ebony Anti Hair Fall Serum">
+            <p>Mountain Ebony Anti Hair Fall Serum</p>
+            <p class="price">Price:₹400</p>
+            <button class="button" onclick="addToCart('shop4', 'Mountain Ebony Anti Hair Fall Serum',400, 'https://www.biotique.com/cdn/shop/products/8904352001987.jpg?v=1665481075')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/Sandalwood_50-SPF--120-ml.jpg?v=1670858663" alt="Sun Shield Sandalwood Sunscreen">
+            <p>Sun Shield Sandalwood Sunscreen</p>
+            <p>Ultra Soothing Lotion</p>
+            <p class="price">Price:₹450 </p>
+            <button class="button" onclick="addToCart('shop5', 'Sun Shield Sandalwood Sunscreen',450, 'https://www.biotique.com/cdn/shop/products/Sandalwood_50-SPF--120-ml.jpg?v=1670858663')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/FFG00330_80acbdc1-39bf-4c57-ac02-b075d951ea2c.jpg?v=1671528441" alt="Carrot Sunscreen & Almond Oil Body Wash">
+            <p>Carrot Sunscreen & Almond Oil Body Wash</p>
+            <p>Winter Cherry Lotion & Green Apple Shampoo</p>
+            <p class="price">Price:₹300</p>
+            <button class="button" onclick="addToCart('shop6', 'Carrot Sunscreen & Almond Oil Body Wash',300, 'https://www.biotique.com/cdn/shop/products/FFG00330_80acbdc1-39bf-4c57-ac02-b075d951ea2c.jpg?v=1671528441')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/8904352004353_1.jpg?v=1669706305" alt="Winter Cherry Body Lotion">
+            <p>Winter Cherry Body Lotion</p>
+            <p class="price">Price:₹350</p>
+            <button class="button" onclick="addToCart('shop7', 'Winter Cherry Body Lotion', 350, 'https://www.biotique.com/cdn/shop/files/8904352004353_1.jpg?v=1669706305')">Add to cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://rukminim3.flixcart.com/image/850/1000/xif0q/soap/8/w/q/-original-imagthmta4dkvn8z.jpeg?q=90&crop=false" alt="Basil Bar Bathing Bar">
+            <p>Basil Bar Bathing Bar</p>
+            <p class="price">Price:₹250</p>
+            <button class="button" onclick="addToCart('shop8', 'Basil Bar Bathing Bar', 250, 'https://rukminim3.flixcart.com/image/850/1000/xif0q/soap/8/w/q/-original-imagthmta4dkvn8z.jpeg?q=90&crop=false')">Add to cart</button>
+        </div>
+        <div class="product">
+            <img src="https://global.biotique.com/cdn/shop/products/view01_22267e20-6f46-4300-93ae-d1af960929d5.jpg?v=1679998886"alt="Bio rose">
+            <p>Bio rose</p>
+            <p class="price">price:₹350</p>
+            <button class="button"onclick="addToCart('shop9','Bio rose',350 ,'https://global.biotique.com/cdn/shop/products/view01_22267e20-6f46-4300-93ae-d1af960929d5.jpg?v=1679998886')">Add to cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61hOLt6yqPL.jpg"alt="Youth ageing serum">
+            <p>Youth ageing serum</p>
+            <p class="price">price:₹400</p>
+            <button class="button"onclick="addToCart('shop10','Youth ageing serum',400 ,'https://m.media-amazon.com/images/I/61hOLt6yqPL.jpg')">Add to cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51w8xf0jNvL.jpg"alt="Papaya deepclean face wash">
+            <p>Papaya deepclean face wash</p>
+            <p class="price">price:₹180</p>
+            <button class="button"onclick="addToCart('shop11','Papaya deepclean face wash',180 ,'https://m.media-amazon.com/images/I/51w8xf0jNvL.jpg')">Add to cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/8904352005343_1-min_e28c4e2d-ced8-4b81-974c-c759ecd9f5fe.jpg?v=1672726433 "alt="Anti ageing face massage cream">
+            <p>Anti ageing face massage cream</p>
+            <p class="price">price:₹675</p>
+            <button class="button"onclick="addToCart('shop12','Anti ageing face massage cream',675 ,'https://www.biotique.com/cdn/shop/products/8904352005343_1-min_e28c4e2d-ced8-4b81-974c-c759ecd9f5fe.jpg?v=1672726433')">Add to cart</button>
+        </div>
+
+    </div>
+    
+    <div class="view-more-container">
+        <button class="btn-relative" onclick="goToPage('view-more.html')">View More</button>
+    </div>
+
+    <script>
+        // Function to add items to cart
+        function addToCart(id, name, price, image) {
+            // Get existing cart or create new one
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save back to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            
+            // Show confirmation
+            alert(`${name} added to cart!`);
+            
+            // Optionally redirect to cart page
+            // window.location.href = 'cart.html';
+        }
+        
+        // Navigation function
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

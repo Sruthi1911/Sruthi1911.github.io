@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        .body {
+            background: url("https://i.pinimg.com/736x/d5/87/5d/d5875dcbe3f7a62f117dd5cc7bd11378.jpg") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .contact {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background-color: lightgreen;
+            padding: 0px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form {
+            margin-top: 250px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px 30px;
+            border-radius: 6px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: lightpink;
+            color: blue;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            border: none;
+        }
+        .button:hover {
+            background-color: lightgreen;
+        }
+        .help {
+            background-color: silver;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="contact">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Get in touch with us for any queries.</p>
+    </div>
+    <div class="form">
+        <h2>Get in Touch</h2>
+        <form id="contact-form">
+            <label for="name">Username:</label><br><br>
+            <input type="text" id="name" placeholder="Username..."><br><br>
+            <label for="e-mail">E-mail:</label><br><br>
+            <input type="text" id="e-mail" placeholder="Enter your E-mail..."><br><br>
+            <label for="number">Mobile Number:</label><br><br>
+            <input type="text" id="number" placeholder="Enter your mobile number..."><br><br>
+            <label for="query">Query or Suggestions:</label><br><br>
+            <input type="text" id="query" placeholder="Your query or suggestions..."><br><br>
+            <button type="submit" class="button">Send Message</button>
+        </form>
+        <div class="help">
+            <h2>Need Help ?</h2>
+        </div>
+        <div>
+            <p>1800-678-345📞</p>
+            <p>contact@biotique.com ✉️</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Successfully submitted your response...!');
+            window.location.href = 'project.html';
+        });
+    </script>
+</body>
+</html>

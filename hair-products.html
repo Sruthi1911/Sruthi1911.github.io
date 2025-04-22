@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hair-Products</title>
+    <style>
+        h2 {
+            background-color: khaki;
+            color: black;
+            text-align: center;
+            padding: 10px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: antiquewhite;
+        }
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            flex-basis: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .btn-relative {
+            background-color: darkseagreen;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-relative:hover {
+            background-color: #6d9e6d;
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 200px; 
+            height:200px;
+            object-fit: cover;
+            border-radius:0%; 
+            margin-bottom: 10px;
+        }
+        .product p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Hair-Products</h2>
+    </div>
+    <div class="product-container">
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/view01_871b7262-1677-4a32-8569-8247ea4436a3.jpg?v=1675420289" alt="Bio Kelp Protein Shampoo">
+            <p>Bio Kelp Protein Shampoo</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('hair1', 'Bio Kelp Protein Shampoo', 300, 'https://www.biotique.com/cdn/shop/products/view01_871b7262-1677-4a32-8569-8247ea4436a3.jpg?v=1675420289')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/8904352001987.jpg?v=1665481075" alt="Bio Mountain Ebony Hair Serum">
+            <p>Bio Mountain Ebony Hair Serum</p>
+            <p class="price">₹250</p>
+            <button class="btn-relative" onclick="addToCart('hair2', 'Bio Mountain Ebony Hair Serum', 250, 'https://www.biotique.com/cdn/shop/products/8904352001987.jpg?v=1665481075')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/8904352000775_1-min.jpg?v=1670235721" alt="Bio Almond Oil Hair Conditioner">
+            <p>Bio Almond Oil Hair Conditioner</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('hair3', 'Bio Almond Oil Hair Conditioner', 350, 'https://www.biotique.com/cdn/shop/files/8904352000775_1-min.jpg?v=1670235721')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.bbassets.com/media/uploads/p/xl/265662_9-biotique-bio-kelp-protein-shampoo-for-hair.jpg" alt="Bio Kelp Protein Shampoo (200ml)">
+            <p>Bio Kelp Protein Shampoo (200ml)</p>
+            <p class="price">₹150</p>
+            <button class="btn-relative" onclick="addToCart('hair4', 'Bio Kelp Protein Shampoo (200ml)', 150, 'https://www.bbassets.com/media/uploads/p/xl/265662_9-biotique-bio-kelp-protein-shampoo-for-hair.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://pixies.in/media/catalog/product/cache/e9780188a08ae15edb442fcb34502371/b/i/biotique_ocean_kelp_anti_hairfall_shampoo_659ml.jpg" alt="Bio Ocean Kelp Anti-Hairfall Shampoo">
+            <p>Bio Ocean Kelp Anti-Hairfall Shampoo</p>
+            <p class="price">₹250</p>
+            <button class="btn-relative" onclick="addToCart('hair5', 'Bio Ocean Kelp Anti-Hairfall Shampoo', 250, 'https://pixies.in/media/catalog/product/cache/e9780188a08ae15edb442fcb34502371/b/i/biotique_ocean_kelp_anti_hairfall_shampoo_659ml.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/view01_ed2e24af-5a70-4d87-83c4-1de7cc1e99c4.jpg?v=1675419801" alt="Bio Bhringraj Hair Oil">
+            <p>Bio Bhringraj Hair Oil</p>
+            <p class="price">₹200</p>
+            <button class="btn-relative" onclick="addToCart('hair6', 'Bio Bhringraj Hair Oil', 200, 'https://www.biotique.com/cdn/shop/products/view01_ed2e24af-5a70-4d87-83c4-1de7cc1e99c4.jpg?v=1675419801')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://global.biotique.com/cdn/shop/products/view01-min_7.jpg?v=1679998863" alt="Bio Coconut Whitening Shampoo">
+            <p>Bio Coconut Whitening Shampoo</p>
+            <p class="price">₹250</p>
+            <button class="btn-relative" onclick="addToCart('hair7', 'Bio Coconut Whitening Shampoo', 250, 'https://global.biotique.com/cdn/shop/products/view01-min_7.jpg?v=1679998863')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://global.biotique.com/cdn/shop/products/8904352004568_1-min.jpg?v=1670855131&width=533" alt="Bio Neem Anti-Dandruff Shampoo">
+            <p>Bio Neem Anti-Dandruff Shampoo</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('hair8', 'Bio Neem Anti-Dandruff Shampoo', 350, 'https://global.biotique.com/cdn/shop/products/8904352004568_1-min.jpg?v=1670855131&width=533')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images-static.nykaa.com/media/catalog/product/6/8/68aa3cf8906009459875_1a.jpg" alt="Bio Soya Protein Shampoo">
+            <p>Bio Soya Protein Shampoo</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('hair9', 'Bio Soya Protein Shampoo', 350, 'https://images-static.nykaa.com/media/catalog/product/6/8/68aa3cf8906009459875_1a.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.grocerybus.in/admin_panel/upload/images/8905-1682684954.jpg" alt="Bio Almond Hair Cream">
+            <p>Bio Almond Hair Cream</p>
+            <p class="price">₹100</p>
+            <button class="btn-relative" onclick="addToCart('hair10', 'Bio Almond Hair Cream', 100, 'https://www.grocerybus.in/admin_panel/upload/images/8905-1682684954.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://global.biotique.com/cdn/shop/products/view01_d0ffca13-8c0d-41c3-86c6-62bd3964720c.jpg?v=1679999085&width=533" alt="Bio Margosa Scalp Tonic">
+            <p>Bio Margosa Scalp Tonic</p>
+            <p class="price">₹200</p>
+            <button class="btn-relative" onclick="addToCart('hair11', 'Bio Margosa Scalp Tonic', 200, 'https://global.biotique.com/cdn/shop/products/view01_d0ffca13-8c0d-41c3-86c6-62bd3964720c.jpg?v=1679999085&width=533')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://leletoday.in/wp-content/uploads/2022/10/BIOTIQUE-Advanced-Ayurveda-Bio-Soya-Protein-Shampoo-100ml-For-Dry-Damaged-Color-Treated-Hair.webp" alt="Bio Soya Protein Shampoo (100ml)">
+            <p>Bio Soya Protein Shampoo (100ml)</p>
+            <p class="price">₹100</p>
+            <button class="btn-relative" onclick="addToCart('hair12', 'Bio Soya Protein Shampoo (100ml)', 100, 'https://leletoday.in/wp-content/uploads/2022/10/BIOTIQUE-Advanced-Ayurveda-Bio-Soya-Protein-Shampoo-100ml-For-Dry-Damaged-Color-Treated-Hair.webp')">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to add items to cart
+        function addToCart(id, name, price, image) {
+            // Get existing cart or create new one
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save back to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            
+            // Show confirmation
+            alert(`${name} added to cart!`);
+        }
+        
+        // Navigation function
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Natural-Makeup</title>
+    <style>
+        h2 {
+            background-color: khaki;
+            color: black;
+            text-align: center;
+            padding: 10px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: antiquewhite;
+        }
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            flex-basis: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .btn-relative {
+            background-color: darkseagreen;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-relative:hover {
+            background-color: #6d9e6d;
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 200px; 
+            height:200px;
+            object-fit: cover;
+            border-radius:0%; 
+            margin-bottom: 10px;
+        }
+        .product p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Natural-Makeup</h2>
+    </div>
+    <div class="product-container">
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/8904317301169_2in1mascara_03-min.jpg?v=1705306466" alt="Bio 2-in-1 Mascara">
+            <p>Bio 2-in-1 Mascara</p>
+            <p class="price">₹250</p>
+            <button class="btn-relative" onclick="addToCart('makeup1', 'Bio 2-in-1 Mascara', 250, 'https://www.biotique.com/cdn/shop/files/8904317301169_2in1mascara_03-min.jpg?v=1705306466')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/8904317301497_fawn_02-min.jpg?v=1669275716" alt="Bio Fawn Lipstick">
+            <p>Bio Fawn Lipstick</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('makeup2', 'Bio Fawn Lipstick', 300, 'https://www.biotique.com/cdn/shop/files/8904317301497_fawn_02-min.jpg?v=1669275716')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/2_51ce1fdc-3fd4-446d-80a7-3e564cfac453.jpg?v=1697220888" alt="Bio Natural Kajal">
+            <p>Bio Natural Kajal</p>
+            <p class="price">₹200</p>
+            <button class="btn-relative" onclick="addToCart('makeup3', 'Bio Natural Kajal', 200, 'https://www.biotique.com/cdn/shop/files/2_51ce1fdc-3fd4-446d-80a7-3e564cfac453.jpg?v=1697220888')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/8904317302173__Aspen_3-min.jpg?v=1668426054" alt="Bio Aspen Lipstick">
+            <p>Bio Aspen Lipstick</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('makeup4', 'Bio Aspen Lipstick', 350, 'https://www.biotique.com/cdn/shop/files/8904317302173__Aspen_3-min.jpg?v=1668426054')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/15065124/2021/8/25/c26d258f-70b1-4250-be88-6e7d8c26c9d11629889606528-BIOTIQUE-NATURAL-MAKEUP-Women-Foundation-and-Primer-63162988-1.jpg" alt="Bio Foundation & Primer">
+            <p>Bio Foundation & Primer</p>
+            <p class="price">₹200</p>
+            <button class="btn-relative" onclick="addToCart('makeup5', 'Bio Foundation & Primer', 200, 'https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/15065124/2021/8/25/c26d258f-70b1-4250-be88-6e7d8c26c9d11629889606528-BIOTIQUE-NATURAL-MAKEUP-Women-Foundation-and-Primer-63162988-1.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/3_1e84080d-eb4d-445f-81b9-bdb999495518.jpg?v=1705303786" alt="Bio Natural Blush">
+            <p>Bio Natural Blush</p>
+            <p class="price">₹150</p>
+            <button class="btn-relative" onclick="addToCart('makeup6', 'Bio Natural Blush', 150, 'https://www.biotique.com/cdn/shop/files/3_1e84080d-eb4d-445f-81b9-bdb999495518.jpg?v=1705303786')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/8904317301305-min_13fc54e6-c583-4397-9780-ce7f2cccce24.jpg?v=1665378149&width=533" alt="Bio Natural Lip Gloss">
+            <p>Bio Natural Lip Gloss</p>
+            <p class="price">₹200</p>
+            <button class="btn-relative" onclick="addToCart('makeup7', 'Bio Natural Lip Gloss', 200, 'https://www.biotique.com/cdn/shop/products/8904317301305-min_13fc54e6-c583-4397-9780-ce7f2cccce24.jpg?v=1665378149&width=533')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://media6.ppl-media.com/tr:h-235,w-235,c-at_max,dpr-2/static/img/product/195985/biotique-natural-makeup-magicliner-water-resistant-eyeliner-midnight-black-9-ml_1_display_1693464123_d8a1f1c8.jpg" alt="Bio Magicliner Eyeliner">
+            <p>Bio Magicliner Eyeliner</p>
+            <p class="price">₹150</p>
+            <button class="btn-relative" onclick="addToCart('makeup8', 'Bio Magicliner Eyeliner', 150, 'https://media6.ppl-media.com/tr:h-235,w-235,c-at_max,dpr-2/static/img/product/195985/biotique-natural-makeup-magicliner-water-resistant-eyeliner-midnight-black-9-ml_1_display_1693464123_d8a1f1c8.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61SaeNxHitL._AC_UF1000,1000_QL80_.jpg" alt="Bio Natural Compact Powder">
+            <p>Bio Natural Compact Powder</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('makeup9', 'Bio Natural Compact Powder', 350, 'https://m.media-amazon.com/images/I/61SaeNxHitL._AC_UF1000,1000_QL80_.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/collections/natural-makup.jpg?v=1659340101" alt="Bio Makeup Kit">
+            <p>Bio Makeup Kit</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('makeup10', 'Bio Makeup Kit', 300, 'https://www.biotique.com/cdn/shop/collections/natural-makup.jpg?v=1659340101')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKeDgmOwgXs6RfqtpAiGzTzasdaSTgbcBWHA&s" alt="Bio Natural Lip Balm">
+            <p>Bio Natural Lip Balm</p>
+            <p class="price">₹300</p>
+            <button class="btn-relative" onclick="addToCart('makeup11', 'Bio Natural Lip Balm', 300, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKeDgmOwgXs6RfqtpAiGzTzasdaSTgbcBWHA&s')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/8904317300919_orchid_05-min.jpg?v=1665405669" alt="Bio Orchid Lipstick">
+            <p>Bio Orchid Lipstick</p>
+            <p class="price">₹100</p>
+            <button class="btn-relative" onclick="addToCart('makeup12', 'Bio Orchid Lipstick', 100, 'https://www.biotique.com/cdn/shop/products/8904317300919_orchid_05-min.jpg?v=1665405669')">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to add items to cart
+        function addToCart(id, name, price, image) {
+            // Get existing cart or create new one
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save back to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            
+            // Show confirmation
+            alert(`${name} added to cart!`);
+        }
+        
+        // Navigation function
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

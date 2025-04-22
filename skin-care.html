@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skin-Care</title>
+    <style>
+        h2 {
+            background-color: khaki;
+            color: black;
+            text-align: center;
+            padding: 10px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: antiquewhite;
+        }
+        .product {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            flex-basis: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .btn-relative {
+            background-color: darkseagreen;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-relative:hover {
+            background-color: #6d9e6d;
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 200px; 
+            height:200px;
+            object-fit: cover;
+            border-radius:0%; 
+            margin-bottom: 10px;
+        }
+        .product p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Skin-Care</h2>
+    </div>
+    <div class="product-container">
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkuJjDpcAwXNmhusEWbOCYgUNQPbgZxzPhmA&s" alt="Bio Morning Nectar Moisturizer">
+            <p>Bio Morning Nectar Moisturizer</p>
+            <p class="price">₹600</p>
+            <button class="btn-relative" onclick="addToCart('skin1', 'Bio Morning Nectar Moisturizer', 600, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkuJjDpcAwXNmhusEWbOCYgUNQPbgZxzPhmA&s')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61b3Z0P1tuL._AC_UF1000,1000_QL80_.jpg" alt="Bio Almond Oil">
+            <p>Bio Almond Oil</p>
+            <p class="price">₹720</p>
+            <button class="btn-relative" onclick="addToCart('skin2', 'Bio Almond Oil', 720, 'https://m.media-amazon.com/images/I/61b3Z0P1tuL._AC_UF1000,1000_QL80_.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/files/FFG00722combo-5-front.jpg?v=1683565304" alt="Bio Vitamin C Serum">
+            <p>Bio Vitamin C Serum</p>
+            <p class="price">₹450</p>
+            <button class="btn-relative" onclick="addToCart('skin3', 'Bio Vitamin C Serum', 450, 'https://www.biotique.com/cdn/shop/files/FFG00722combo-5-front.jpg?v=1683565304')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61NkMKNyQEL.jpg" alt="Bio Fairness Cream">
+            <p>Bio Fairness Cream</p>
+            <p class="price">₹550</p>
+            <button class="btn-relative" onclick="addToCart('skin4', 'Bio Fairness Cream', 550, 'https://m.media-amazon.com/images/I/61NkMKNyQEL.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.biotique.com/cdn/shop/products/Nourish-_-Shine-Bodycare-Combo.jpg?v=1674551863" alt="Bio Fruit Face Wash">
+            <p>Bio Fruit Face Wash</p>
+            <p class="price">₹350</p>
+            <button class="btn-relative" onclick="addToCart('skin5', 'Bio Fruit Face Wash', 350, 'https://www.biotique.com/cdn/shop/products/Nourish-_-Shine-Bodycare-Combo.jpg?v=1674551863')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/face-wash/6/y/b/140-skincare-travel-kit-35-ml-each-biotique-original-imagz7sez6ggs3k5.jpeg?q=90&crop=false" alt="Bio Honey Gel">
+            <p>Bio Honey Gel</p>
+            <p class="price">₹420</p>
+            <button class="btn-relative" onclick="addToCart('skin6', 'Bio Honey Gel', 420, 'https://rukminim2.flixcart.com/image/850/1000/xif0q/face-wash/6/y/b/140-skincare-travel-kit-35-ml-each-biotique-original-imagz7sez6ggs3k5.jpeg?q=90&crop=false')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71yg+Z5LAML.jpg" alt="Bio Papaya Brightening Face Wash">
+            <p>Bio Papaya Brightening Face Wash</p>
+            <p class="price">₹380</p>
+            <button class="btn-relative" onclick="addToCart('skin7', 'Bio Papaya Brightening Face Wash', 380, 'https://m.media-amazon.com/images/I/71yg+Z5LAML.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61veLiXDspL._AC_UF1000,1000_QL80_.jpg" alt="Bio Almond Oil Body Wash">
+            <p>Bio Almond Oil Body Wash</p>
+            <p class="price">₹320</p>
+            <button class="btn-relative" onclick="addToCart('skin8', 'Bio Almond Oil Body Wash', 320, 'https://m.media-amazon.com/images/I/61veLiXDspL._AC_UF1000,1000_QL80_.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images.apollo247.in/pub/media/catalog/product/b/i/bio0917-1-.jpg" alt="Bio Rose Water">
+            <p>Bio Rose Water</p>
+            <p class="price">₹280</p>
+            <button class="btn-relative" onclick="addToCart('skin9', 'Bio Rose Water', 280, 'https://images.apollo247.in/pub/media/catalog/product/b/i/bio0917-1-.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images-static.nykaa.com/media/catalog/product/e/9/e9d4db98906009451862_1.jpg?tr=w-500" alt="Bio Coconut Whitening Cream">
+            <p>Bio Coconut Whitening Cream</p>
+            <p class="price">₹490</p>
+            <button class="btn-relative" onclick="addToCart('skin10', 'Bio Coconut Whitening Cream', 490, 'https://images-static.nykaa.com/media/catalog/product/e/9/e9d4db98906009451862_1.jpg?tr=w-500')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://vanitywagon.in/cdn/shop/products/1_49a99e12-9fe6-4b68-9261-dba54bdeed71_384x384.jpg?v=1625488435" alt="Bio Neem Face Wash">
+            <p>Bio Neem Face Wash</p>
+            <p class="price">₹360</p>
+            <button class="btn-relative" onclick="addToCart('skin11', 'Bio Neem Face Wash', 360, 'https://vanitywagon.in/cdn/shop/products/1_49a99e12-9fe6-4b68-9261-dba54bdeed71_384x384.jpg?v=1625488435')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://global.biotique.com/cdn/shop/products/8904352003981_1.jpg?v=1668154990" alt="Bio Anti-Ageing Cream">
+            <p>Bio Anti-Ageing Cream</p>
+            <p class="price">₹650</p>
+            <button class="btn-relative" onclick="addToCart('skin12', 'Bio Anti-Ageing Cream', 650, 'https://global.biotique.com/cdn/shop/products/8904352003981_1.jpg?v=1668154990')">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to add items to cart
+        function addToCart(id, name, price, image) {
+            // Get existing cart or create new one
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save back to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            
+            // Show confirmation
+            alert(`${name} added to cart!`);
+        }
+        
+        // Navigation function
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

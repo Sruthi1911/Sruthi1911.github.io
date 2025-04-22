@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Biotique - Natural Skincare</title>
+        <style>
+            header {
+                background-color: darkseagreen;
+                color: #5A3E36;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+            }
+            .logo {
+                width: 100px;
+                height: auto;
+                margin-right: 20px;
+            }
+            .header-text {
+                text-align: left;
+            }
+            .button {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-left: auto;
+            }
+            .btn-relative {
+                background-color: #FFFDD0;
+                color: black;
+                padding: 7px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: all 0.3s;
+            }
+            .btn-relative:hover {
+                background-color: cadetblue;
+                color: white;
+            }
+            .search {
+                display: flex;
+                align-items: center;
+                background: white;
+                padding: 5px 10px;
+                border-radius: 20px;
+                border: 1px solid #ccc;
+                width: 220px;
+                margin-left: 40px;
+            }
+            .search-box {
+                border: none;
+                outline: none;
+                flex: 1;
+                padding: 5px;
+                font-size: 14px;
+            }
+            .search-button {
+                cursor: pointer;
+                padding: 5px;
+            }
+            .slideshow-container {
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                margin-top: 20px;
+            }
+            .slide {
+                display: none;
+                width: 100%;
+                height:100%;
+            }
+            .slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            .line {
+                background-color:bisque;
+                padding: 10px;
+                text-align: center;
+            }
+            .btn{
+                background-color:lightcyan;
+                color: black;
+                padding: 7px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+                margin: 0 5px;
+                transition: all 0.3s;
+            }
+            .btn:hover{
+                background-color:aqua;
+                color:black;
+            }
+            /* Search results dropdown */
+            .search-results {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 300px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                max-height: 400px;
+                overflow-y: auto;
+                display: none;
+                z-index: 1000;
+            }
+            .search-result-item {
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+            .search-result-item:hover {
+                background-color: #f5f5f5;
+            }
+            .search-result-item img {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                margin-right: 10px;
+                border-radius: 4px;
+            }
+            .search-result-item .info {
+                flex: 1;
+            }
+            .search-result-item .name {
+                font-weight: bold;
+                margin-bottom: 3px;
+            }
+            .search-result-item .price {
+                color: #e74c3c;
+                font-size: 14px;
+            }
+            .no-results {
+                padding: 15px;
+                text-align: center;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="https://cdn.brandfetch.io/idE1l_byri/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Website logo" class="logo">
+            <div class="header-text">
+                <h1>BIOTIQUE</h1>
+                <p>Advanced Ayurveda - Promoting holistic wellness</p>
+            </div>
+            <div class="button">
+                <button class="btn-relative" onclick="goToPage('index.html')">🏠Home</button>
+                <button class="btn-relative" onclick="goToPage('login.html')">🔑Login</button>
+                <button class="btn-relative" onclick="goToPage('Shop-now.html')">🛍️Shop-now</button>
+                <button class="btn-relative" onclick="goToPage('About-us.html')">🆎 About Us</button>
+                <button class="btn-relative" onclick="goToPage('contact.html')">📞 Contacts</button>
+                <button class="btn-relative" onclick="goToPage('cart.html')">🛒 Cart</button>
+                <div class="search-container" style="position: relative;">
+                    <div class="search">
+                        <input type="text" id="search" class="search-box" placeholder="Search for products..." oninput="searchProducts()">
+                        <span class="search-button" onclick="performSearch()">🔍</span>
+                    </div>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </header>
+        <div class="line">
+            <button class="btn" onclick="goToPage('collections.html')">Collections</button>
+            <button class="btn" onclick="goToPage('skin-care.html')">Skin-Care</button>
+            <button class="btn" onclick="goToPage('hair-products.html')">Hair-Products</button>
+            <button class="btn" onclick="goToPage('natural-makeup.html')">Natural-Makeup</button>
+        </div>
+
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="https://www.biotique.com/cdn/shop/files/Nautra-Nector-1920x600--without_discount.jpg?v=1740477922" alt="Slide 1">
+            </div>
+            <div class="slide fade">
+                <img src="https://global.biotique.com/cdn/shop/files/1920_600_5_1.jpg?v=1669275099" alt="Slide 2">
+            </div>
+            <div class="slide fade">
+                <img src="https://www.biotique.com/cdn/shop/files/Facewash-Biotique-Banner-1920X600_3.jpg?v=1738299296" alt="Slide 3">
+            </div>
+            <div class="slide fade">
+                <img src="https://www.biotique.com/cdn/shop/collections/Skincare_1920x600_b12666dd-c252-4986-8257-fb500b52d4cb.jpg?v=1689230069" alt="Slide 4">
+            </div>
+            <div class="slide fade">
+                <img src="https://www.biotique.com/cdn/shop/files/Ayurveda_Hair_Banner_c9ce6c22-a58c-4280-bb9e-76a87d155160.jpg?v=1661322122" alt="Slide 5 ">
+            </div>
+            <div class="slide fade">
+                <img src="https://global.biotique.com/cdn/shop/files/1920_630_6_1.jpg?v=1669275212" alt="Slide 6">
+            </div>
+            <div class="slide fade">
+                <img src="https://www.biotique.com/cdn/shop/files/sara-AM-PM-web-26aug22-2_dd921426-f71f-42c5-842e-57aa89d9f489.jpg?v=1664864996" alt="Slide 7">
+            </div>
+            <div class="slide fade">
+                <img src="https://global.biotique.com/cdn/shop/files/Facewash-range-banner_43665026-388a-40cf-9bab-21b4208ba735.jpg?v=1741694290" alt="Slide 8">
+            </div>
+        </div>
+        <script>
+            // Product data that matches your cart page
+            const products = {
+                "col1": { id: "col1", name: "Bio Morning Nectar Moisturizer", price: 600, image: "https://www.biotique.com/cdn/shop/products/FFG00328_7d400e01-6bd7-4585-b456-883f21a98faa.jpg?v=1671528330", category: "Collections" },
+                "col2": { id: "col2", name: "Bio Almond Oil", price: 120, image: "https://images-static.nykaa.com/media/catalog/product/1/8/18d33a48906009451060_1509232.jpg?tr=w=500", category: "Collections" },
+                "col3": { id: "col3", name: "Bio Vitamin C Serum", price: 200, image: "https://www.biotique.com/cdn/shop/articles/embrace-monsoon-glow-discover-the-benefits-of-biotique_s-face-serums.jpg?v=1689508629", category: "Collections" },
+                "col4": { id: "col4", name: "Bio Fairness Cream", price: 250, image: "https://www.biotique.com/cdn/shop/products/Face-Glow-Fairness-Cream-50g.jpg?v=1671093167", category: "Collections" },
+                "col5": { id: "col5", name: "Bio Fruit Face Wash", price: 350, image: "https://www.allurecosmetics.in/cdn/shop/products/Biotique-100percentage-Pure-Natural-Fruit-Face-Wash-Pack-Of-2.jpg?v=1670056400", category: "Collections" },
+                "col6": { id: "col6", name: "Foaming Honey Face Wash", price: 300, image: "https://www.biotique.com/cdn/shop/files/8904352004094_1-min.jpg?v=1670243945", category: "Collections" },
+                "col7": { id: "col7", name: "Skin cleaning face wash", price: 300, image: "https://www.biotique.com/cdn/shop/products/view01.jpg?v=1675409159", category: "Collections" },
+                "col8": { id: "col8", name: "Vitamin C Brightening Concentrate", price: 300, image: "https://www.biotique.com/cdn/shop/products/03_CLEAR-IMPROVEMENT-Vitamin-C-Brightening-Concentrate_30ml_artwork.jpg?v=1670219336", category: "Collections" },
+                "col9": { id: "col9", name: "Bio Hair Shampoo & Conditioner", price: 600, image: "https://www.biotique.com/cdn/shop/products/FFG00327.jpg?v=1671528212", category: "Collections" },
+                "col10": { id: "col10", name: "Bio Skin Care", price: 400, image: "https://www.biotique.com/cdn/shop/products/De-Pigmentation-kit.jpg?v=1674551837", category: "Collections" },
+                "col11": { id: "col11", name: "Bio Skin Clearing & Brightening Products", price: 600, image: "https://m.media-amazon.com/images/I/710WoGt1lkL.jpg", category: "Collections" },
+                "col12": { id: "col12", name: "Bio Kit", price: 500, image: "https://theglobalhues.com/wp-content/uploads/2021/08/BIOTIQUE-ADVANCED-AYURVEDA.png", category: "Collections" },
+                "skin1": { id: "skin1", name: "Bio Morning Nectar Moisturizer", price: 600, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkuJjDpcAwXNmhusEWbOCYgUNQPbgZxzPhmA&s", category: "skin-care" },
+                "skin2": { id: "skin2", name: "Bio Almond Oil", price: 720, image: "https://m.media-amazon.com/images/I/61b3Z0P1tuL._AC_UF1000,1000_QL80_.jpg", category: "skin-care" },
+                "skin3": { id: "skin3", name: "Bio Vitamin C Serum", price: 450, image: "https://www.biotique.com/cdn/shop/files/FFG00722combo-5-front.jpg?v=1683565304", category: "skin-care" },
+                "skin4": { id: "skin4", name: "Bio Fairness Cream", price: 550, image: "https://m.media-amazon.com/images/I/61NkMKNyQEL.jpg", category: "skin-care" },
+                "skin5": { id: "skin5", name: "Bio Fruit Face Wash", price: 350, image: "https://www.biotique.com/cdn/shop/products/Nourish-_-Shine-Bodycare-Combo.jpg?v=1674551863", category: "skin-care" },
+                "skin6": { id: "skin6", name: "Bio Honey Gel", price: 420, image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/face-wash/6/y/b/140-skincare-travel-kit-35-ml-each-biotique-original-imagz7sez6ggs3k5.jpeg?q=90&crop=false", category: "skin-care" },
+                "skin7": { id: "skin7", name: "Bio Papaya Brightening Face Wash", price: 380, image: "https://m.media-amazon.com/images/I/71yg+Z5LAML.jpg", category: "skin-care" },
+                "skin8": { id: "skin8", name: "Bio Almond Oil Body Wash", price: 320, image: "https://m.media-amazon.com/images/I/61veLiXDspL._AC_UF1000,1000_QL80_.jpg", category: "skin-care" },
+                "skin9": { id: "skin9", name: "Bio Rose Water", price: 280, image: "https://images.apollo247.in/pub/media/catalog/product/b/i/bio0917-1-.jpg", category: "skin-care" },
+                "skin10": { id: "skin10", name: "Bio Coconut Whitening Cream", price: 490, image: "https://images-static.nykaa.com/media/catalog/product/e/9/e9d4db98906009451862_1.jpg?tr=w-500", category: "skin-care" },
+                "skin11": { id: "skin11", name: "Bio Neem Face Wash", price: 360, image: "https://vanitywagon.in/cdn/shop/products/1_49a99e12-9fe6-4b68-9261-dba54bdeed71_384x384.jpg?v=1625488435", category: "skin-care" },
+                "skin12": { id: "skin12", name: "Bio Anti-Ageing Cream", price: 650, image: "https://global.biotique.com/cdn/shop/products/8904352003981_1.jpg?v=1668154990", category: "skin-care" },
+                "hair1": { id: "hair1", name: "Bio Kelp Protein Shampoo", price: 300, image: "https://www.biotique.com/cdn/shop/products/view01_871b7262-1677-4a32-8569-8247ea4436a3.jpg?v=1675420289", category: "hair-products" },
+                "hair2": { id: "hair2", name: "Bio Mountain Ebony Hair Serum", price: 250, image: "https://www.biotique.com/cdn/shop/products/8904352001987.jpg?v=1665481075", category: "hair-products" },
+                "hair3": { id: "hair3", name: "Bio Almond Oil Hair Conditioner", price: 350, image: "https://www.biotique.com/cdn/shop/files/8904352000775_1-min.jpg?v=1670235721", category: "hair-products" },
+                "hair4": { id: "hair4", name: "Bio Kelp Protein Shampoo (200ml)", price: 150, image: "https://www.bbassets.com/media/uploads/p/xl/265662_9-biotique-bio-kelp-protein-shampoo-for-hair.jpg", category: "hair-products" },
+                "hair5": { id: "hair5", name: "Bio Ocean Kelp Anti-Hairfall Shampoo", price: 250, image: "https://pixies.in/media/catalog/product/cache/e9780188a08ae15edb442fcb34502371/b/i/biotique_ocean_kelp_anti_hairfall_shampoo_659ml.jpg", category: "hair-products" },
+                "hair6": { id: "hair6", name: "Bio Bhringraj Hair Oil", price: 200, image: "https://www.biotique.com/cdn/shop/products/view01_ed2e24af-5a70-4d87-83c4-1de7cc1e99c4.jpg?v=1675419801", category: "hair-products" },
+                "hair7": { id: "hair7", name: "Bio Coconut Whitening Shampoo", price: 250, image: "https://global.biotique.com/cdn/shop/products/view01-min_7.jpg?v=1679998863", category: "hair-products" },
+                "hair8": { id: "hair8", name: "Bio Neem Anti-Dandruff Shampoo", price: 350, image: "https://global.biotique.com/cdn/shop/products/8904352004568_1-min.jpg?v=1670855131&width=533", category: "hair-products" },
+                "hair9": { id: "hair9", name: "Bio Soya Protein Shampoo", price: 350, image: "https://images-static.nykaa.com/media/catalog/product/6/8/68aa3cf8906009459875_1a.jpg", category: "hair-products" },
+                "hair10": { id: "hair10", name: "Bio Almond Hair Cream", price: 100, image: "https://www.grocerybus.in/admin_panel/upload/images/8905-1682684954.jpg", category: "hair-products" },
+                "hair11": { id: "hair11", name: "Bio Margosa Scalp Tonic", price: 200, image: "https://global.biotique.com/cdn/shop/products/view01_d0ffca13-8c0d-41c3-86c6-62bd3964720c.jpg?v=1679999085&width=533", category: "hair-products" },
+                "hair12": { id: "hair12", name: "Bio Soya Protein Shampoo (100ml)", price: 100, image: "https://leletoday.in/wp-content/uploads/2022/10/BIOTIQUE-Advanced-Ayurveda-Bio-Soya-Protein-Shampoo-100ml-For-Dry-Damaged-Color-Treated-Hair.webp", category: "hair-products" },
+                "makeup1": { id: "makeup1", name: "Bio 2-in-1 Mascara", price: 250, image: "https://www.biotique.com/cdn/shop/files/8904317301169_2in1mascara_03-min.jpg?v=1705306466", category: "natural-makeup" },
+                "makeup2": { id: "makeup2", name: "Bio Fawn Lipstick", price: 300, image: "https://www.biotique.com/cdn/shop/files/8904317301497_fawn_02-min.jpg?v=1669275716", category: "natural-makeup" },
+                "makeup3": { id: "makeup3", name: "Bio Natural Kajal", price: 200, image: "https://www.biotique.com/cdn/shop/files/2_51ce1fdc-3fd4-446d-80a7-3e564cfac453.jpg?v=1697220888", category: "natural-makeup" },
+                "makeup4": { id: "makeup4", name: "Bio Aspen Lipstick", price: 350, image: "https://www.biotique.com/cdn/shop/files/8904317302173__Aspen_3-min.jpg?v=1668426054", category: "natural-makeup" },
+                "makeup5": { id: "makeup5", name: "Bio Foundation & Primer", price: 200, image: "https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/15065124/2021/8/25/c26d258f-70b1-4250-be88-6e7d8c26c9d11629889606528-BIOTIQUE-NATURAL-MAKEUP-Women-Foundation-and-Primer-63162988-1.jpg", category: "natural-makeup" },
+                "makeup6": { id: "makeup6", name: "Bio Natural Blush", price: 150, image: "https://www.biotique.com/cdn/shop/files/3_1e84080d-eb4d-445f-81b9-bdb999495518.jpg?v=1705303786", category: "natural-makeup" },
+                "makeup7": { id: "makeup7", name: "Bio Natural Lip Gloss", price: 200, image: "https://www.biotique.com/cdn/shop/products/8904317301305-min_13fc54e6-c583-4397-9780-ce7f2cccce24.jpg?v=1665378149&width=533", category: "natural-makeup" },
+                "makeup8": { id: "makeup8", name: "Bio Magicliner Eyeliner", price: 150, image: "https://media6.ppl-media.com/tr:h-235,w-235,c-at_max,dpr-2/static/img/product/195985/biotique-natural-makeup-magicliner-water-resistant-eyeliner-midnight-black-9-ml_1_display_1693464123_d8a1f1c8.jpg", category: "natural-makeup" },
+                "makeup9": { id: "makeup9", name: "Bio Natural Compact Powder", price: 350, image: "https://m.media-amazon.com/images/I/61SaeNxHitL._AC_UF1000,1000_QL80_.jpg", category: "natural-makeup" },
+                "makeup10": { id: "makeup10", name: "Bio Makeup Kit", price: 300, image: "https://www.biotique.com/cdn/shop/collections/natural-makup.jpg?v=1659340101", category: "natural-makeup" },
+                "makeup11": { id: "makeup11", name: "Bio Natural Lip Balm", price: 300, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKeDgmOwgXs6RfqtpAiGzTzasdaSTgbcBWHA&s", category: "natural-makeup" },
+                "makeup12": { id: "makeup12", name: "Bio Orchid Lipstick", price: 100, image: "https://www.biotique.com/cdn/shop/products/8904317300919_orchid_05-min.jpg?v=1665405669", category: "natural-makeup" },
+                "shop1":{ id:"shop1",name:"Nourish & Hydrate moisturizer",price:300,image:"https://m.media-amazon.com/images/I/71eGPJQryIL.AC_UF1000,1000_QL80.jpg",category:"Shop-now"},
+                "shop2":{id:"shop2",name:"Aloe Vera & Raspberry Hydra Gel",price:300,image:"https://www.biotique.com/cdn/shop/files/12_AloeVeraSPF50GelSunscreen_100gm.jpg?v=1686117080",category:"Shop-now"},
+                "shop3":{id:"shop3",name:"Fruit Brightening Lip Balm",price:300,image:"https://www.biotique.com/cdn/shop/products/8904317306188_1-min.jpg?v=1670233844",category:"Shop-now"},
+                "shop4":{id:"shop4",name:"Mountain Ebony Anti Hair Fall Serum",price:400,image:"https://www.biotique.com/cdn/shop/products/8904352001987.jpg?v=1665481075",category:"Shop-now"},
+                "shop5":{id:"shop5",name:"Sun Shield Sandalwood Sunscreen Ultra Soothing Lotion",price:450,image:"https://www.biotique.com/cdn/shop/products/Sandalwood_50-SPF--120-ml.jpg?v=1670858663",category:"Shop-now"},
+                "shop6":{id:"shop6",name:"Carrot Sunscreen & Almond Oil Body Wash Winter Cherry Lotion & Green Apple Shampoo",price:450,image:"https://www.biotique.com/cdn/shop/products/FFG00330_80acbdc1-39bf-4c57-ac02-b075d951ea2c.jpg?v=1671528441",category:"Shop-now"},
+                "shop7":{id:"shop7",name:"Winter Cherry Body Lotion",price:350,image:"https://www.biotique.com/cdn/shop/files/8904352004353_1.jpg?v=1669706305",category:"Shop-now"},
+                "shop8":{id:"shop8",name:"Basil Bar Bathing Bar",price:250,image:"https://rukminim3.flixcart.com/image/850/1000/xif0q/soap/8/w/q/-original-imagthmta4dkvn8z.jpeg?q=90&crop=false",category:"Shop-now"},
+                "shop9":{id:"shop9",name:"Bio rose",price:350,image:"https://global.biotique.com/cdn/shop/products/view01_22267e20-6f46-4300-93ae-d1af960929d5.jpg?v=1679998886",category:"Shop-now"},
+                "shop10":{id:"shop10",name:"Youth ageing serum",price:400,image:"https://m.media-amazon.com/images/I/61hOLt6yqPL.jpg",category:"Shop-now"},
+                "shop11":{id:"shop11",name:"Papaya deepclean face wash",price:180,image:"https://m.media-amazon.com/images/I/51w8xf0jNvL.jpg",category:"Shop-now"},
+                "shop12":{id:"shop12",name:"Anti ageing face massage cream",price:675,image:"https://www.biotique.com/cdn/shop/products/8904352005343_1-min_e28c4e2d-ced8-4b81-974c-c759ecd9f5fe.jpg?v=1672726433",category:"Shop-now"},
+            };
+
+            function goToPage(page) {
+                window.location.href = page;
+            }
+
+            // Search functionality
+            function searchProducts() {
+                const searchTerm = document.getElementById('search').value.toLowerCase();
+                const resultsContainer = document.getElementById('searchResults');
+                
+                if (searchTerm.length < 2) {
+                    resultsContainer.style.display = 'none';
+                    return;
+                }
+                
+                const matchingProducts = Object.values(products).filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) || 
+                    product.category.toLowerCase().includes(searchTerm)
+                );
+                
+                displaySearchResults(matchingProducts);
+            }
+
+            function displaySearchResults(products) {
+                const resultsContainer = document.getElementById('searchResults');
+                resultsContainer.innerHTML = '';
+                
+                if (products.length === 0) {
+                    resultsContainer.innerHTML = '<div class="no-results">No products found</div>';
+                    resultsContainer.style.display = 'block';
+                    return;
+                }
+                
+                products.forEach(product => {
+                    const item = document.createElement('div');
+                    item.className = 'search-result-item';
+                    item.onclick = () => goToProductPage(product.id);
+                    item.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="info">
+                            <div class="name">${product.name}</div>
+                            <div class="price">₹${product.price.toFixed(2)}</div>
+                            <div class="category">${formatCategory(product.category)}</div>
+                        </div>
+                    `;
+                    resultsContainer.appendChild(item);
+                });
+                
+                resultsContainer.style.display = 'block';
+            }
+
+            function formatCategory(category) {
+                return category
+                    .replace(/-/g, ' ')
+                    .split(' ')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+            }
+
+            function performSearch() {
+                const searchTerm = document.getElementById('search').value.trim();
+                if (searchTerm) {
+                    // In a real app, you would redirect to a search results page
+                    alert(`Searching for: ${searchTerm}`);
+                    document.getElementById('searchResults').style.display = 'none';
+                }
+            }
+
+            function goToProductPage(productId) {
+                // Determine which page to go to based on category
+                const product = products[productId];
+                let page = 'Shop-now.html'; // default
+                
+                if (product.category === 'Collections') page = 'collections.html';
+                else if (product.category === 'skin-care') page = 'skin-care.html';
+                else if (product.category === 'hair-products') page = 'hair-products.html';
+                else if (product.category === 'natural-makeup') page = 'natural-makeup.html';
+                
+                // Store the product to highlight in the destination page
+                localStorage.setItem('highlightProduct', productId);
+                window.location.href = page;
+            }
+
+            // Close search results when clicking outside
+            document.addEventListener('click', function(event) {
+                const searchContainer = document.querySelector('.search-container');
+                if (!searchContainer.contains(event.target)) {
+                    document.getElementById('searchResults').style.display = 'none';
+                }
+            });
+
+            // Slideshow script
+            let slideIndex = 0;
+            function showSlides() {
+                let slides = document.getElementsByClassName("slide");
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1; }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 3000);
+            }
+            showSlides();
+        </script>
+    </body> 
+</html>

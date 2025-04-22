@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background: url("https://i.pinimg.com/736x/ef/9d/9e/ef9d9ea9a0c87b8c457a82613161937c.jpg") no-repeat center center fixed;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .signup-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .signup-container button:hover {
+            background-color: #45a049;
+        }
+        .signup-container a {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #4caf50;
+            text-decoration: none;
+        }
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .password-strength {
+            height: 5px;
+            margin-top: 5px;
+            background-color: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .strength-meter {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+        <div id="message" class="message"></div>
+        <form id="signupForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required oninput="checkPasswordStrength()">
+            <div class="password-strength">
+                <div id="strengthMeter" class="strength-meter"></div>
+            </div>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <button type="button" onclick="createAccount()">Create Account</button>
+        </form>
+        <a href="login.html">Already have an account? Login</a>
+    </div>
+
+    <script>
+        // Initialize user storage if it doesn't exist
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify([]));
+        }
+
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthMeter = document.getElementById('strengthMeter');
+            let strength = 0;
+            
+            // Length check
+            if (password.length > 7) strength += 1;
+            // Contains numbers
+            if (password.match(/\d/)) strength += 1;
+            // Contains special characters
+            if (password.match(/[^A-Za-z0-9]/)) strength += 1;
+            // Contains both upper and lower case
+            if (password.match(/[A-Z]/) && password.match(/[a-z]/)) strength += 1;
+            
+            // Update meter
+            const width = strength * 25;
+            let color;
+            
+            if (strength <= 1) color = '#ff0000';
+            else if (strength <= 2) color = '#ff9900';
+            else if (strength <= 3) color = '#33cc33';
+            else color = '#009900';
+            
+            strengthMeter.style.width = `${width}%`;
+            strengthMeter.style.backgroundColor = color;
+        }
+
+        function createAccount() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const messageDiv = document.getElementById('message');
+            
+            // Validation
+            if (username.length < 3) {
+                showMessage("Username must be at least 3 characters", "error");
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                showMessage("Please enter a valid email address", "error");
+                return;
+            }
+            
+            if (password.length < 8) {
+                showMessage("Password must be at least 8 characters", "error");
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showMessage("Passwords do not match", "error");
+                return;
+            }
+            
+            // Check if email already exists
+            const users = JSON.parse(localStorage.getItem('users'));
+            const emailExists = users.some(user => user.email === email);
+            
+            if (emailExists) {
+                showMessage("An account with this email already exists", "error");
+                return;
+            }
+            
+            // Create new user
+            users.push({
+                username: username,
+                email: email,
+                password: password // In a real app, you would hash this
+            });
+            
+            localStorage.setItem('users', JSON.stringify(users));
+            showMessage("Account created successfully! Redirecting to login...", "success");
+            
+            // Redirect to login after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds (unless it's a success message with redirect)
+            if (type !== 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
